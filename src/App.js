@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Miguel's Direct Messages</h1>
-        <form name="tacos" data-netlify="true" method="POST">
+        <form name="tacos" method="POST" netlify>
           <label>
             First and Last Name:
             <input type="text" name="name" />
