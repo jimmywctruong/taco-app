@@ -12,7 +12,7 @@ function App() {
             <input type="text" name="name" />
           </label>
 
-          <label>
+          {/* <label>
             Asada (Steak):
             <input type="number" name="asada-qty" />
           </label>
@@ -66,7 +66,7 @@ function App() {
               <option value="chicharron">Chicharron</option>
               <option value="barbacoa">Barbacoa</option>
             </select>
-          </fieldset>
+          </fieldset> */}
 
           <input type="submit" value="Submit" />
         </form>
