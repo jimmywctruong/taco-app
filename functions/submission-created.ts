@@ -5,6 +5,11 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
 
   console.log(event);
   console.log(context);
+
+  return {
+    statusCode: 200,
+    body: 'success'
+  }
 };
 
 export { handler };
