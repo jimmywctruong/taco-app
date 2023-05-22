@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
+import TacoInput from './TacoInput';
 
 const TacoForm = () => {
   const [formData, setFormData] = useState({
     name: '',
-    asadaCount: null,
-    alpastorCount: null,
-    chorizoCount: null,
-    polloCount: null,
-    chicharronCount: null,
-    barbacoaCount: null,
-    cabesaCount: null,
-    tripasCount: null,
+    asadaCount: 0,
+    alpastorCount: 0,
+    chorizoCount: 0,
+    polloCount: 0,
+    chicharronCount: 0,
+    barbacoaCount: 0,
+    cabesaCount: 0,
+    tripasCount: 0,
   });
 
+  const handleNameChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value});
+  };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: parseInt(e.target.value)});
   };
 
   const handleSubmit = (e) => {
@@ -29,10 +34,11 @@ const TacoForm = () => {
         'Content-Type': 'application/json',
       },
     })
-      .then((response) => response.json())
+      // .then((response) => )
       .then((data) => {
         console.log('Success:', data);
         // Handle success case here
+
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -48,92 +54,60 @@ const TacoForm = () => {
           type="text"
           name="name"
           value={formData.name}
-          onChange={handleChange}
+          onChange={handleNameChange}
           required
         />
       </label>
       <br />
-      <label>
-        Asada (Steak):
-        <input 
-          type="number"
-          name="asada-count"
-          value={formData.asadaCount}
-          onChange={handleChange}
-        />
-      </label>
-      <br/>
-      <label>
-        Al-Pastor (Pork):
-        <input
-          type="number"
-          name="alpastor-count"
-          value={formData.alpastorCount}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Chorizo (Pork):
-        <input 
-          type="number"
-          name="chorizo-count"
-          value={formData.chorizoCount}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Pollo (Pork):
-        <input 
-          type="number"
-          name="pollo-count"
-          value={formData.polloCount}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Chicharron (Pork Skin):
-        <input 
-          type="number" 
-          name="chicharron-count"
-          value={formData.chicharronCount}
-          onChange={handleChange}
-        />
-        
-      </label>
-      <br />
-      <label>
-        Barbacoa:
-        <input
-          type="number"
-          name="barbacoa-count"
-          value={formData.barbacoaCount}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Cabesa:
-        <input
-          type="number"
-          name="cabesa-count"
-          value={formData.cabesaCount}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Tripas:
-        <input 
-          type="number"
-          name="tripas-count"
-          value={formData.tripasCount}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
+      <TacoInput 
+        name="asadaCount"
+        label="Asada (Steak):"
+        value={formData.asadaCount}
+        onStateChange={handleChange}
+      />
+      <TacoInput 
+        name="alpastorCount"
+        label="Al-Pastor (Pork):"
+        value={formData.alpastorCount}
+        onStateChange={handleChange}
+      />
+      <TacoInput 
+        name="chorizoCount"
+        label="Chorizo (Ground Pork):"
+        value={formData.chorizoCount}
+        onStateChange={handleChange}
+      />
+
+      <TacoInput 
+        name="polloCount"
+        label="Pollo (Pork):"
+        value={formData.polloCount}
+        onStateChange={handleChange}
+      />
+      <TacoInput 
+        name="chicharronCount"
+        label="Chicharron (Pork Skin):"
+        value={formData.chicharronCount}
+        onStateChange={handleChange}
+      />
+      <TacoInput 
+        name="barbacoaCount"
+        label="Barbacoa:"
+        value={formData.polloCount}
+        onStateChange={handleChange}
+      />
+      <TacoInput 
+        name="cabesaCount"
+        label="Cabesa:"
+        value={formData.cabesaCount}
+        onStateChange={handleChange}
+      />
+      <TacoInput 
+        name="tripasCount"
+        label="Tripas:"
+        value={formData.tripasCount}
+        onStateChange={handleChange}
+      />
       {/* <fieldset>
         <legend>Menudo</legend>
         <input type="checkbox" name="grid1" id="menduo" value="Yes" />
